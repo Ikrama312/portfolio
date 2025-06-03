@@ -3,7 +3,23 @@
 import React from "react"
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
-import { Mail, Phone, MapPin, Code, Database, Globe, Zap, Users, TrendingUp, Sun, Moon, Calendar } from "lucide-react"
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Code,
+  Database,
+  Globe,
+  Zap,
+  Users,
+  TrendingUp,
+  Sun,
+  Moon,
+  Calendar,
+  Briefcase,
+  Linkedin,
+  Github,
+} from "lucide-react"
 import Image from "next/image"
 
 // Theme Context
@@ -333,6 +349,53 @@ function AnimatedBackground() {
   )
 }
 
+// Social Media Links Component
+function SocialLinks() {
+  const { isDark } = React.useContext(ThemeContext)
+
+  return (
+    <div className="flex flex-wrap justify-center gap-4 mt-6">
+      <a
+        href="https://www.linkedin.com/in/ikrama-ansari"
+        target="_blank"
+        rel="noreferrer"
+        className={`p-3 rounded-full ${
+          isDark
+            ? "bg-blue-600/20 hover:bg-blue-600/40 text-blue-400"
+            : "bg-blue-500/20 hover:bg-blue-500/40 text-blue-600"
+        } transition-all duration-300 hover:scale-110`}
+        aria-label="LinkedIn Profile"
+      >
+        <Linkedin size={24} />
+      </a>
+      <a
+        href="https://github.com/Ikrama312"
+        target="_blank"
+        rel="noreferrer"
+        className={`p-3 rounded-full ${
+          isDark ? "bg-slate-700/50 hover:bg-slate-700/80 text-white" : "bg-slate-200 hover:bg-slate-300 text-slate-800"
+        } transition-all duration-300 hover:scale-110`}
+        aria-label="GitHub Profile"
+      >
+        <Github size={24} />
+      </a>
+      <a
+        href="https://www.upwork.com/freelancers/~01d8c4168d8ee750bc"
+        target="_blank"
+        rel="noreferrer"
+        className={`p-3 rounded-full ${
+          isDark
+            ? "bg-green-600/20 hover:bg-green-600/40 text-green-400"
+            : "bg-green-500/20 hover:bg-green-500/40 text-green-600"
+        } transition-all duration-300 hover:scale-110`}
+        aria-label="Upwork Profile"
+      >
+        <Briefcase size={24} />
+      </a>
+    </div>
+  )
+}
+
 // Hero Section with Photo
 function HeroSection() {
   const { scrollYProgress } = useScroll()
@@ -364,7 +427,7 @@ function HeroSection() {
             className={`relative w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 ${isDark ? "border-amber-400" : "border-cyan-400"} shadow-2xl ${isDark ? "shadow-amber-400/30" : "shadow-cyan-400/30"}`}
           >
             <Image
-              src="https://v0.dev/_next/image?url=https%3A%2F%2Fhebbkx1anhila5yf.public.blob.vercel-storage.com%2FIkrama-wA0x5QENOTJP7AvZnGuMwh1j9DFIn3.png&w=3840&q=75"
+              src="/placeholder.svg?height=192&width=192"
               alt="Muhammad Ikrama"
               fill
               className="object-cover"
@@ -372,7 +435,7 @@ function HeroSection() {
               onError={(e) => {
                 console.warn("Image failed to load, using fallback")
                 const target = e.target as HTMLImageElement
-                target.src = "https://v0.dev/_next/image?url=https%3A%2F%2Fhebbkx1anhila5yf.public.blob.vercel-storage.com%2FIkrama-wA0x5QENOTJP7AvZnGuMwh1j9DFIn3.png&w=3840&q=75"
+                target.src = "/placeholder.svg?height=192&width=192"
               }}
             />
           </div>
@@ -403,6 +466,9 @@ function HeroSection() {
             Crafting exceptional digital experiences with 7+ years of expertise in React JS and Node JS. Passionate
             about innovation, performance optimization, and delivering scalable solutions that drive business growth.
           </p>
+
+          {/* Social Media Links */}
+          <SocialLinks />
         </motion.div>
 
         <motion.div
@@ -929,6 +995,48 @@ function ContactSection() {
           </div>
         </motion.div>
 
+        {/* Social Profiles */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-12 flex flex-wrap justify-center gap-6"
+        >
+          <a
+            href="https://www.linkedin.com/in/ikrama-ansari"
+            target="_blank"
+            className={`flex items-center gap-3 px-8 py-4 ${
+              isDark ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600"
+            } rounded-full transition-all duration-300 text-white font-semibold hover:scale-105 shadow-lg hover:shadow-xl`}
+            rel="noreferrer"
+          >
+            <Linkedin size={24} />
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/Ikrama312"
+            target="_blank"
+            className={`flex items-center gap-3 px-8 py-4 ${
+              isDark ? "bg-slate-700 hover:bg-slate-800" : "bg-slate-800 hover:bg-slate-900"
+            } rounded-full transition-all duration-300 text-white font-semibold hover:scale-105 shadow-lg hover:shadow-xl`}
+            rel="noreferrer"
+          >
+            <Github size={24} />
+            GitHub
+          </a>
+          <a
+            href="https://www.upwork.com/freelancers/~01d8c4168d8ee750bc"
+            target="_blank"
+            className={`flex items-center gap-3 px-8 py-4 ${
+              isDark ? "bg-green-600 hover:bg-green-700" : "bg-green-500 hover:bg-green-600"
+            } rounded-full transition-all duration-300 text-white font-semibold hover:scale-105 shadow-lg hover:shadow-xl`}
+            rel="noreferrer"
+          >
+            <Briefcase size={24} />
+            Upwork
+          </a>
+        </motion.div>
+
         {/* Education & Languages */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -972,6 +1080,65 @@ function ContactSection() {
   )
 }
 
+// Footer with Social Links
+function Footer() {
+  const { isDark } = React.useContext(ThemeContext)
+
+  return (
+    <footer className="py-8 px-6 border-t dark:bg-slate-900 dark:border-slate-800 bg-white border-gray-200">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="dark:text-slate-400 text-slate-600">
+            © 2025 Muhammad Ikrama. Crafted with passion and precision.
+          </p>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/ikrama-ansari"
+              target="_blank"
+              rel="noreferrer"
+              className={`p-2 rounded-full ${
+                isDark
+                  ? "bg-blue-600/20 hover:bg-blue-600/40 text-blue-400"
+                  : "bg-blue-500/20 hover:bg-blue-500/40 text-blue-600"
+              } transition-all duration-300 hover:scale-110`}
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
+              href="https://github.com/Ikrama312"
+              target="_blank"
+              rel="noreferrer"
+              className={`p-2 rounded-full ${
+                isDark
+                  ? "bg-slate-700/50 hover:bg-slate-700/80 text-white"
+                  : "bg-slate-200 hover:bg-slate-300 text-slate-800"
+              } transition-all duration-300 hover:scale-110`}
+              aria-label="GitHub Profile"
+            >
+              <Github size={20} />
+            </a>
+            <a
+              href="https://www.upwork.com/freelancers/~01d8c4168d8ee750bc"
+              target="_blank"
+              rel="noreferrer"
+              className={`p-2 rounded-full ${
+                isDark
+                  ? "bg-green-600/20 hover:bg-green-600/40 text-green-400"
+                  : "bg-green-500/20 hover:bg-green-500/40 text-green-600"
+              } transition-all duration-300 hover:scale-110`}
+              aria-label="Upwork Profile"
+            >
+              <Briefcase size={20} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
 export default function Portfolio() {
   // Remove the custom scroll handler for faster scrolling
   useEffect(() => {
@@ -992,15 +1159,7 @@ export default function Portfolio() {
         <ExperienceSection />
         <SkillsSection />
         <ContactSection />
-
-        {/* Footer */}
-        <footer className="py-8 px-6 border-t dark:bg-slate-900 dark:border-slate-800 bg-white border-gray-200">
-          <div className="max-w-6xl mx-auto text-center">
-            <p className="dark:text-slate-400 text-slate-600">
-              © 2025 Muhammad Ikrama. Crafted with passion and precision.
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </ThemeProvider>
   )
