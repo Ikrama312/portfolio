@@ -427,7 +427,7 @@ function HeroSection() {
             className={`relative w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 ${isDark ? "border-amber-400" : "border-cyan-400"} shadow-2xl ${isDark ? "shadow-amber-400/30" : "shadow-cyan-400/30"}`}
           >
             <Image
-              src="/placeholder.svg?height=192&width=192"
+              src="https://v0.dev/_next/image?url=https%3A%2F%2Fhebbkx1anhila5yf.public.blob.vercel-storage.com%2FIkrama-wA0x5QENOTJP7AvZnGuMwh1j9DFIn3.png&w=3840&q=75"
               alt="Muhammad Ikrama"
               fill
               className="object-cover"
@@ -435,7 +435,7 @@ function HeroSection() {
               onError={(e) => {
                 console.warn("Image failed to load, using fallback")
                 const target = e.target as HTMLImageElement
-                target.src = "/placeholder.svg?height=192&width=192"
+                target.src = "https://v0.dev/_next/image?url=https%3A%2F%2Fhebbkx1anhila5yf.public.blob.vercel-storage.com%2FIkrama-wA0x5QENOTJP7AvZnGuMwh1j9DFIn3.png&w=3840&q=75"
               }}
             />
           </div>
